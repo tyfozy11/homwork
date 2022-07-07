@@ -40,15 +40,15 @@ b = 10
  #   idx += 1
 
 #while True:
-#    user_input = input("Enter the number")
+#user_input = input("Enter the number")
  #   if user_input.isdigit():
-#       print("Done")
-#    else:
-#        print('It\' s not number')
+  #     print("Done")
+   # else:
+    #print('It\' s not number')
 
-#lst = [1, 22, 2, 'T', 44, 52]
-#for i in lst:
- #   print('--->', i)
+lst = [1, 22, 2, 'T', 44, 52]
+for i in lst:
+    print('--->', i)
 
 #lst2 =[ [2, 3, 4,[5,6, 7,],[8, 9, 10] ]
 #for value in lst2:
@@ -70,4 +70,3 @@ import time
 while True:
     print('Hello')
     time.sleep(12)
-
