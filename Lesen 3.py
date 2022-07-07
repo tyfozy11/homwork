@@ -56,3 +56,18 @@ b = 10
 
   #  for sub_val in value:
   #      print('--->', sub_val)
+
+#counter = 5
+#lst = []
+#while counter> 0:
+  #  user_input = input('Enter smth:')
+    #lst.append( user_input)
+#counter -= 1
+#print(lst)
+
+import time
+
+while True:
+    print('Hello')
+    time.sleep(12)
+
