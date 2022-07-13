@@ -16,7 +16,7 @@ print('The {} symbol in word {} is "{}"!'.format(number_symbol, word, result))
 
 date_input = input('Enter your dates!')
 print('input_result', '---->   ', date_input)
-print(date_input.count(' ')+1, '  words in this sentence.')
+print(len(date_input.split()), '  words in this sentence.')
 
 
 # task 3.
