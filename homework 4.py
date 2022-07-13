@@ -50,7 +50,9 @@ MORSE_CODE_DICT = {
 '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-',
 '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'
 }
-print(MORSE_CODE_DICT.items())
+mydict_new=dict(zip(MORSE_CODE_DICT.values(),MORSE_CODE_DICT.keys()))
+
+print(mydict_new.items())
 string_to_decode1 = '.. .-.. .. -.- . .--. -.-- - .... --- -. ...-- .-.-.- .---- ----- '
 string_to_decode2 = '.. -.- -. --- .-- --..-- -.-- --- ..- -.-. .- -. -.. --- .. - '
 print(string_to_decode1.split())
