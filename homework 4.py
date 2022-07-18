@@ -14,18 +14,18 @@ from pprint import pprint
 
 # використати сети!!!
 
-# print( "Вітаю,введіть через пробіл міста, в яких, Ви, був за минулі 10 років, будь ласка.")
-# date_input = input("").title().split()
-# date_input = set(date_input)
-# print(date_input )
-# print( "Дякую, а тепер введіть міста, куди, Ви, хотіли б  поїхати внаступні 10 років ")
-# date_input2 =  input("").title().split()
-# date_input2 = set(date_input2)
-# print(date_input2)
-# if  date_input & date_input2 :
-#     print(','.join(date_input & date_input2), 'мабуть, дуже сподобалося в містах')
-# else :
-#      print(' відкритий до чогось нового')
+print( "Вітаю,введіть через пробіл міста, в яких, Ви, був за минулі 10 років, будь ласка.")
+date_input = input("").title().split()
+date_input = set(date_input)
+print(date_input )
+print( "Дякую, а тепер введіть міста, куди, Ви, хотіли б  поїхати внаступні 10 років ")
+date_input2 =  input("").title().split()
+date_input2 = set(date_input2)
+print(date_input2)
+if  date_input & date_input2 :
+    print(','.join(date_input & date_input2), 'Вам мабуть, дуже сподобалося в містах, якщо Ви хочете повернутись.')
+else :
+     print('Ви відкритий до чогось нового!')
 
 # task 2.
 #дано код Морзе, що зберігається в словнику
@@ -43,27 +43,27 @@ from pprint import pprint
 # }
 # string_to_decode1 = '.. .-.. .. -.- . .--. -.-- - .... --- -. ...-- .-.-.- .---- ----- '
 # string_to_decode2 = '.. -.- -. --- .-- --..-- -.-- --- ..- -.-. .- -. -.. --- .. - '
-# MORSE_CODE_DICT = {
-# 'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
-# 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
-# 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
-# 'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
-# '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-',
-# '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'
-# }
-# mydict_new=dict(zip(MORSE_CODE_DICT.values(),MORSE_CODE_DICT.keys()))
-# # pprint(mydict_new)
-# string_to_decode1 = '..  .-.. .. -.- .  .--. -.-- - .... --- -.  ...-- .-.-.- .---- ----- '
-# string_to_decode2 = '..  -.- -. --- .-- --..--  -.-- --- ..-  -.-. .- -.  -.. ---  .. - '
-# # pprint(string_to_decode1.split())
-#
-#
-# result_new = ""
-# for word in string_to_decode2.split("  "):
-#     for letter in word.split():
-#         result_new += mydict_new[letter]
-#     result_new += " "
-# print(result_new.rstrip(' '))
+MORSE_CODE_DICT = {
+'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+'6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--', '.': '.-.-.-',
+'?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'
+}
+mydict_new=dict(zip(MORSE_CODE_DICT.values(),MORSE_CODE_DICT.keys()))
+pprint(mydict_new)
+string_to_decode1 = '..  .-.. .. -.- .  .--. -.-- - .... --- -.  ...-- .-.-.- .---- ----- '
+string_to_decode2 = '..  -.- -. --- .-- --..--  -.-- --- ..-  -.-. .- -.  -.. ---  .. - '
+pprint(string_to_decode1.split())
+
+
+result_new = ""
+for word in string_to_decode2.split("  "):
+    for letter in word.split():
+        result_new += mydict_new[letter]
+    result_new += " "
+print(result_new.rstrip(' '))
 
 # task 3.
 
