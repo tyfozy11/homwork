@@ -7,10 +7,10 @@
 import requests
 from pprint import pprint
 url = ' https://dummyjson.com/todos'
-todo_non = requests.get(url)
+todo_examination= requests.get(url)
 
-todo_ready = todo_non.json()
+todo_not_done = todo_examination.json()
 #pprint(todo_ready['todos'])
-for i in range (len (todo_ready['todos'])):
-    if todo_ready['todos'][i]['completed'] == False:
-       pprint(todo_ready['todos'][i]['todo'])
+for i in range(len(todo_not_done['todos'])):
+    if not todo_not_done['todos'][i]['completed']:
+       pprint(todo_not_done['todos'][i]['todo'])
