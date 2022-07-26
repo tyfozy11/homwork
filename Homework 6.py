@@ -18,19 +18,19 @@ verification_of_information = selection_float('dfd')
 # -у будь-якому іншому випадку повернути кортеж з цих аргументів
 def data_processing(first, second):
      if type(first) in (int, float) and type(second) in (int, float):
-        print('Sum of multiplication first, second---->', first*second)
+       # print('Sum of multiplication first, second---->', first*second)
         return first*second
      if type(first) == (str) and type(second) == (str):
-         print('Concatenation first, second----->', first+second)
+         #print('Concatenation first, second----->', first+second)
          return first+second
      if type(first) == (str) and type(second) != (str):
          new_dict = dict.fromkeys([first],second)
-         print('The result of creating a dictionary from first, second -------> ', new_dict)
+         #print('The result of creating a dictionary from first, second -------> ', new_dict)
          return new_dict
      else:
-         new_list=[first, second]
-         new_tuple = tuple(new_list)
-         print('The result of creating a tuple from first, second--------> ', new_tuple)
+         new_tuple = first, second
+        # print('The result of creating a tuple from first, second--------> ', new_tuple)
          return new_tuple
 
-checking_elements = data_processing(3, 'gfihqi')
+checking_elements = data_processing(4, '2')
+print(checking_elements)
