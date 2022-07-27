@@ -15,65 +15,91 @@
 #
 # Зробіть все за допомогою функцій! Для кожної функції пропишіть докстрінг.
 # Не забувайте що кожна функція має виконувати тільки одне завдання і про правила написання коду.
-visitor_age = "Вітаю, вкажіть Ваш вік (кількість повних років і це має буті ціле число від 0 до 120 ) та натисніть 'Enter', будь ласка!"
-error_input='Наголошую що потрібно ввести кількість повних років і це має буті ціле число від 0 до 120, спробуйте знову'
-print(visitor_age)
-age2=input('Вводити тут---->')
+
+
 max_age = 120
-age2=int(age2)
-def information_input(age1=age2):
-    max_age = 120
-    age1 = int(age2)
-    age1=int
-    try:
-        if type(age1) != (int):
-         return error_input
-    except:
-        if age1 <= 0 and age1 > max_age:
-         return error_input()
-    return age1
-res_1=information_input()
-print(res_1)
+visitor_age = f"Вітаю, вкажіть Ваш вік (кількість повних років і це має буті ціле число від 0 до {max_age}) та натисніть 'Enter', будь ласка!"
+error_input = f'Наголошую що потрібно ввести кількість повних років і це має буті ціле число від 0 до {max_age} спробуйте знову'
+message_if_the_child = "Тобі ж {age} {years_ending}! Де твої батьки?"
+message_if_for_adults = "Тобі лише {age} {years_ending}, а це фільм для дорослих!"
+message_if_the_documents = "Вам {age} {years_ending}? Покажіть пенсійне посвідчення!"
+message_if_the_no_tickets = "Незважаючи на те, що вам {age} {years_ending}, білетів все одно нема!"
+but_age = "О вам {age} {years_ending}! Який цікавий вік!"
 
-def sort_age(age_input=information_input()):
-    max_age = 120
-    if type (age_input) != (int):
-        return information_input('eee')
-    if age_input<=0 and age_input> max_age:
-        return information_input()
-def interesting_age(number=information_input()):
-     number = str
-     print(type(number))
-     if len(number) > 1 and (number.count(number[0]) == len(number)):
-         print(f"О, вам {number}! Який цікавий вік!")
-         return
-res_2 =interesting_age(res_1)
 
-def condition_check(age=information_input()):
-    message_if_the_child = (f"Тобі ж {age}! Де твої батьки?")
-    message_if_for_adults = (f"Тобі лише {age}, а це фільм для дорослих!")
-    message_if_the_documents = (f"Вам {age}?Покажіть пенсійне посвідчення!")
-    message_if_the_no_tickets = (f"Незважаючи на те, що вам {age}, білетів всеодно нема!")
-    if age<7:
-      print(message_if_the_child)
-    elif age<16:
-     print(message_if_for_adults)
-    elif age>65:
-     print(message_if_the_documents)
+def get_visitor_age():
+    """
+Function that accepts data from the user and uses a loop to check it against the given conditions.
+if the information is of the right type and correct form, then it is saved for further use,
+if not, the function indicates a failure.
+
+:return:str
+    """
+    while True:
+        test_age = input(visitor_age).lstrip('0')
+        if test_age.isdigit() and int(test_age) <= max_age:
+            return test_age
+        print(error_input)
+
+
+def is_beautiful_age(age: str):
+    """
+Function for definitions using the len() function of duplicated numbers (11, 22...).
+if there are, it returns True. If not then False.
+
+:param age:str
+:return:bool
+    """
+    if len(age) > 1 and (age.count(age[0]) == len(age)):
+        return True
     else:
-     print(message_if_the_no_tickets)
-res = condition_check(res_1)
+        return False
 
-# ages1=[1,21,31,41,51,61,71,81,91,101]
-# ages2=[2,3,4,22,23,24,32,33,34,42,43,44,52,53,54,62,63,64,72,73,74,82,83,84,92,93,94,102,103,104]
-# form_1='рік'
-# form_2='роки'
-# form_3='років'
-# numb =input('puss')
-# for numb in ages1 and ages2:
-#     if numb in ages1:
-#         print(form_1)
-#     elif numb in ages2:
-#         print(form_2)
-#     else:
-#         print(form_3)
+
+def word_case(age: str):
+    """
+Function to change type
+from str to int and analyzing the resulting number,
+determines the desired form of the word,
+checking the digit on which the number received from the user ends.
+
+:param age: str
+:return: str
+    """
+    age_int = int(age)
+    if age_int >= 5 and age_int <= 20:
+        return 'років'
+    if age[-1] == "1":
+        return 'рік'
+    if age[-1] in '234':
+        return 'роки'
+    return 'років'
+
+
+def main():
+    """
+Function for processing data received from functions: get_visitor_age is_beautiful_age
+word_case. After analyzing according to the given parameters,
+a message is displayed depending on which of the conditions was met.
+
+:return: str
+    """
+    user_age = get_visitor_age()
+    beautiful_age = is_beautiful_age(user_age)
+    years_ending = word_case(user_age)
+    age = int(user_age)
+    if beautiful_age:
+        return but_age.format(age=age, years_ending=years_ending)
+
+
+    elif age < 7:
+        return message_if_the_child.format(age=age, years_ending=years_ending)
+    elif age < 16:
+        return message_if_for_adults.format(age=age, years_ending=years_ending)
+    elif age > 65:
+        return message_if_the_documents.format(age=age, years_ending=years_ending)
+    else:
+        return message_if_the_no_tickets.format(age=age, years_ending=years_ending)
+
+
+print(main())
