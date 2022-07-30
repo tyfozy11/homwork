@@ -1,10 +1,23 @@
-def information_input(age1):
-    age1=input('Вводити тут---->')
-    while True:
-        if age1.isdigit() and int(age1)<=max_age:
-            str_age1 = age1
-            num_age = int(age1)
-            break
-        print(error_input)
-        return
-res_1=information_input()
+import random
+
+
+
+
+win, g = ['RS', 'SP', 'PR'], 'Y'
+cg, ca = 0, 0
+
+print('Начинаем игру! Для выхода из игры введете - N \n (варианты ходов: R, S или P)')
+while g != 'N':
+    g = input('Ваш ход: ')
+    a = 'RSP'[random.randint(0, 2)]
+
+    if (g + a) in win:
+        cg += 1
+        print(f'Выиграл игрок, у компьютера {a}. Счет {cg}:{ca}  (игрок:комп)')
+    if (a + g) in win:
+        ca += 1
+        print(f'Выиграл компьютер - {a}. Счет {cg}:{ca}  (игрок:комп)')
+    if a == g:
+        print(f'Ничья - {g} и {a}')
+
+print(f'\nОбщий счет - {cg}:{ca}  (игрок:комп)\n\n Увидимся! ')
