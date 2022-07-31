@@ -21,3 +21,15 @@ while g != 'N':
         print(f'Ничья - {g} и {a}')
 
 print(f'\nОбщий счет - {cg}:{ca}  (игрок:комп)\n\n Увидимся! ')
+
+
+def snk():
+    count = counter
+    iterat = game()
+    while True :
+        if count<=5:
+            return iterat
+        else:
+            return f'\nГра закінчкна\nрахунок:{score_game}'
+
+        ending = input('\nПродовжити введіть велику літеру-Y\nЗавершити гру введіть велику літеру-N ')
