@@ -65,9 +65,7 @@ def game():
         guesses -= 1
         user_number = get_number_from_user()
         if check_numbers(number_to_guess, user_number):
-            print('You WIN!!!!')
+            return 'You WIN!!!!'
+    return '\nSorry.\nThe attempts are over, you did not guess'
 
-
-    print('The attempts are over, you did not guess')
-
-game()
+print(game())
