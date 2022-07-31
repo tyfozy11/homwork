@@ -1,6 +1,6 @@
 import random
 
-REGULATIONS = {
+POSSIBLE_COMBINATIONS = {
     'папір': 'камінь',
     'ножиці': 'папір',
     'камінь': 'ножиці',
@@ -13,14 +13,14 @@ score_game = {
 }
 
 
-def comp_choice():
+def computer_choice():
     """
-    Function for random selection of one of the options in the dictionary REGULATIONS.
+    Function for random selection of one of the options in the dictionary POSSIBLE_COMBINATIONS.
 
     :return:
         (str)
     """
-    choice = random.choice(list(REGULATIONS))
+    choice = random.choice(list(POSSIBLE_COMBINATIONS))
     return choice
 
 
@@ -33,10 +33,10 @@ def player_choice():
     :return:
         (str)
     """
-    variant = list(REGULATIONS)
+    variant = list(POSSIBLE_COMBINATIONS)
     while True:
         try:
-            choice = int(input(
+            choice_player = int(input(
 
                 f'Вітаю, виберіть один з варіантів зазначених нижче!\n\n'
                 f'для вибору {variant[0]}- введіть 0\n'
@@ -46,8 +46,8 @@ def player_choice():
         except ValueError:
             print('Ведено не вірне значення, спробуйте звону.')
         else:
-            if choice <= 2:
-                return variant[choice]
+            if choice_player <= 2:
+                return variant[choice_player]
             else:
                 print('Не вірно, наголошую, що потрібно ввести саме 0, 1 або 2!\nCпробуйте ще.')
 
@@ -62,19 +62,19 @@ def game():
         (str)
     """
 
-    com = comp_choice()
+    computer = computer_choice()
     player = player_choice()
 
-    if com == player:
+    if computer == player:
         score_game['нічия'] += 1
         return "нічия"
 
-    if REGULATIONS[com] == player:
+    if POSSIBLE_COMBINATIONS[computer] == player:
         score_game['комп\'ютер'] += 1
         print(player)
-        return f'\nПереміг комп\'ютер!\n(комп\'ютер обрав {com}, ваш вибір {player})'
+        return f'\nПереміг комп\'ютер!\n(комп\'ютер обрав {computer}, ваш вибір {player})'
     score_game['гравець'] += 1
-    return f'\nВи перемогли!!\n(комп\'ютер обрав {com}, ваш вибір {player})'
+    return f'\nВи перемогли!!\n(комп\'ютер обрав {computer}, ваш вибір {player})'
 
 
 if __name__ == '__main__':
