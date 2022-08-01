@@ -30,7 +30,7 @@ import time
 #
 # if difference
 
-a = 96
-s = 91
-d = a%s
-print(d)
+a = 29
+s = 92
+d = a-s
+print(abs(d))
