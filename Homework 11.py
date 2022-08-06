@@ -9,11 +9,25 @@ class Vehicle:
     movement_speed = None
 
     def __init__(self, new_passenger_capacity, new_travel_environment, new_movement_speed):
+        """
+
+        :param new_passenger_capacity:
+        :param new_travel_environment:
+        :param new_movement_speed:
+        """
         self.passenger_capacity = new_passenger_capacity
         self.travel_environment = new_travel_environment
         self.movement_speed = new_movement_speed
 
     def description(self):
+        """
+
+        The function substitutes the data received during the creation of the class object into the string template
+        and outputs the formatted string.
+
+        :return:
+        (str)
+        """
         return f'Short description:\n\ntravel_environment-{self.travel_environment};' \
                f'\npassenger capacity-{self.passenger_capacity};\n' \
                f'movement speed-{self.movement_speed}.'
@@ -23,11 +37,18 @@ class Automobile(Vehicle):
     complexity_of_management = 'easily'
 
     def description(self):
+        """
+        The function substitutes the data received during the creation of the class object into the string template
+        and outputs the formatted string.
+        :return:
+            (str)
+        """
         return f'Short description for automobile:\n\ntravel_environment-{self.travel_environment};' \
                f'\npassenger capacity-{self.passenger_capacity};\n' \
                f'movement speed-{self.movement_speed}\ncomplexity_of_management-{self.complexity_of_management}'
 
 
+minivan = Automobile('Small(1-7)', 'ground', 'average')
 car = Automobile('Small(1-5)', 'ground', 'average')
 
 
@@ -35,18 +56,31 @@ class Airplane(Vehicle):
     range_of_flight = 'medium-haul'
 
     def description(self):
+        """
+        The function substitutes the data received during the creation of the class object into the string template
+        and outputs the formatted string.
+        :return:
+            (str)
+        """
         return f'Short description for airplane:\n\ntravel_environment-{self.travel_environment};' \
                f'\npassenger capacity-{self.passenger_capacity};\n' \
                f'movement speed-{self.movement_speed}\nrange_of_flight-{self.range_of_flight}'
 
 
 passenger_plane = Airplane('average (100-250)', 'air space', 'high')
+light_aircraft = Airplane('Small(1-5)', 'air space', 'high')
 
 
 class Ship(Vehicle):
     vessel_class = 'Oasys'
 
     def description(self):
+        """
+        The function substitutes the data received during the creation of the class object into the string template
+        and outputs the formatted string.
+        :return:
+            (str)
+        """
         return f'Short description for ship:\n\ntravel_environment-{self.travel_environment};' \
                f'\npassenger capacity-{self.passenger_capacity};\n' \
                f'movement speed-{self.movement_speed}\nvessel_class-{self.vessel_class}'
