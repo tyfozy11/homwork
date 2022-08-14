@@ -116,7 +116,7 @@ def wrap_validate(func):
 
 
         val1 = is_string(kwargs['password'])
-        val2 = has_any_symbol(kwargs['password'], 'abcdefghijklmnopqrstuvwxyz')
+        val2 = has_any_symbol(kwargs['password'.casefold()], 'abcdefghijklmnopqrstuvwxyz')
         val3 = has_any_symbol(kwargs['password'], '0123456789')
         val4 = has_any_symbol(kwargs['password'], '!')
         val5 = is_valid_length(kwargs['password'])
