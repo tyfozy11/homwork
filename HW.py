@@ -109,29 +109,29 @@ def maximum_length_of_string(string: str, maximum_length=100):
 
 
 def wrap_validate(func):
-    """
-
-    :param func:
-    :return:
-    """
     def verification_validity(*args, **kwargs):
 
         if not 'password' in kwargs:
             raise AttributeError(f'no parameter "password" in arguments of function{func.__name__}')
 
-        result_function = func(*args, **kwargs)
-        val1 = is_string(kwargs['password'])
-        val2 = has_any_symbol('ewjfw12!eetwterryey', 'abcdefghijklmnopqrstuvwxyz')
-        val3 = has_any_symbol('ewjfw12!eetwterryey', '0123456789')
-        val4 = has_any_symbol('ewjfw1!2eetwterryey!hgk', '!')
 
-        if (val1 and val2 and val3 and val4) == True:
-            return {'result': str(func(*args, **kwargs)),
-                    'is_secure': True,
-                    }
-        return {'result': str(func(*args, **kwargs)),
-                'is_secure': False,
-                }
+        val1 = is_string(kwargs['password'])
+        val2 = has_any_symbol(kwargs['password'], 'abcdefghijklmnopqrstuvwxyz')
+        val3 = has_any_symbol(kwargs['password'], '0123456789')
+        val4 = has_any_symbol(kwargs['password'], '!')
+        val5 = is_valid_length(kwargs['password'])
+
+        if val1 and val2 and val3 and val4 and val5:
+            is_secure_password = True
+        else:
+            is_secure_password = False
+
+        result_function = str(func(*args, **kwargs))
+        final_result = maximum_length_of_string(result_function)
+        return {
+            'result': final_result,
+            'is_secure': is_secure_password,
+        }
 
     return verification_validity
 
@@ -157,6 +157,7 @@ f'User {login} created account on {date} with password "{password}". Additional 
 задекоруйте написаним в завданні 1 декоратором
 # """
 
+
 import datetime
 
 
@@ -176,7 +177,7 @@ def registration(login, notes, *, password: str) -> str:
     return f'User {login} created account on {date} with password "{password}". Additional information: {notes}'
 
 
-print(registration('Serhii', 'new user', password='ewjfw1!2eetwterryey'))
+
 
 ##############################################################################
 ############                                                     #############
@@ -196,27 +197,30 @@ print(registration('Serhii', 'new user', password='ewjfw1!2eetwterryey'))
 функцію registration ассертимо ТІЛЬКИ при передачі їй валідних даних (поля паролю)
 """
 
-# if __name__ == '__main__':
-    # assert has_any_symbol('sfsfsff', 'sffwffvvv'), 'adadadadadadad'
-    # assert has_any_symbol()
-    # assert has_any_symbol()
-    # assert maximum_length_of_string()
-    # assert maximum_length_of_string()
-    # assert maximum_length_of_string()
-    # assert is_string()
-    # assert is_string()
-    # assert is_string()
-    # assert is_valid_length()
-    # assert is_valid_length()
-    # assert is_valid_length()
+if __name__ == '__main__':
 
-    # if 'pssword' in registration():
-    #     assert registration()
-    #     assert registration()
-    #     assert registration()
+    assert registration('Serhii', 'new user', password='ewjfw1!2eetwterryey') == {'result': 'User Serhii created account on 2022-08-13 with password "ewjfw1!2eetwterryey". Additional informa...', 'is_secure': True}
+    assert type(registration('we', '12', password='terryey')) == dict
+    assert type(registration('we', '12', password='terryey')) == dict, 'TypeError'
+    assert has_any_symbol('sfsfsff', 'qqqqq') is False, 'Not valid data!'
+    assert has_any_symbol('13131343445', '1234567890') is True
+    assert type(has_any_symbol('jfhsgfahf111!!', 'cxadg11745hsdjh')) == bool, 'Not str type'
+    assert type(maximum_length_of_string('s'*90)) == str
+    assert len(maximum_length_of_string('s'*90)) != 0
+    assert type(is_string('dhfjsahfhfwifw')) == bool
+    assert is_string(34234) is False
+    assert is_string('sfsfwfw212') is True
+    assert is_valid_length('addh') is False
+    assert type(is_valid_length('131')) == bool
+
+
 ##############################################################################
 ############                                                     #############
 ############                      TASK 4                         #############
 ############                     HAVE FUN                        #############
 ############                                                     #############
 ##############################################################################
+
+
+"________________________________Tried but couldn't )________________________"
+"______________________________Thank you for your help!!!_______________________________"

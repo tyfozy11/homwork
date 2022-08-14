@@ -36,12 +36,6 @@ class Point:
         self.y = y_coord
 
 
-point1 = Point(0, 3)
-# point1.x = 100
-point2 = Point(4, 0)
-point3 = Point(4, 3)
-
-
 class Line:
     begin = None
     end = None
@@ -56,26 +50,28 @@ class Line:
         return ((self.begin.x - self.end.x) ** 2 + (self.begin.y - self.end.y) ** 2) ** 0.5
 
 
-line1 = Line(point2, point1)
-line2 = Line(point1, point3)
-line3 = Line(point2, point3)
-
-print(line1.length)
-print(line2.length)
-print(line3.length)
-
-
 class Triangle:
-    side_a = line1
-    side_b = line2
-    side_c = line3
+    point1 = None
+    point2 = None
+    point3 = None
 
-    def __init__(self, side_a_line, side_b_line, side_c_line):
-        self.side_a = side_a_line
-        self.side_b = side_b_line
-        self.side_c = side_c_line
+    def __init__(self, point_1: Point, point_2: Point, point_3: Point):
+        self.point1 = point_1
+        self.point2 = point_2
+        self.point3 = point_3
 
     def calculate_the_area_of_a_triangle(self):
-        p = ((self.side_a + self.side_b + self.side_c) * 0.5)
-        S = (p * (p - self.side_a) * (p - self.side_b) * (p - self.side_c)) ** 0.5
+        self.side_1 = Line(point1, point2)
+        self.side_2 = Line(point2, point3)
+        self.side_3 = Line(point1, point3)
+
+        p = ((self.side_1 + self.side_2 + self.side_3) * 0.5)
+
+        S = (p * (p - self.side_1) * (p - self.side_2) * (p - self.side_3)) ** 0.5
         return S
+
+
+if __name__ == '__main__':
+    point_1 = Point(0, 3)
+    point_2 = Point(4, 0)
+    point_3 = Point(3, 4)
