@@ -91,6 +91,14 @@ class Triangle:
     def __ge__(self, other):
         return self.calculate_the_area_of_a_triangle >= other.calculate_the_area_of_a_triangle
 
+    def __ne__(self, other):
+        return self.calculate_the_area_of_a_triangle != other.calculate_the_area_of_a_triangle
+
+    def __str__(self):
+        return f'\nVertex coordinates:\nVertex_1 - ({self._point1.x,self._point1.y}),\nVertex_2 - ' \
+               f'{self._point2.x,self._point2.y},\n' \
+               f'Vertex_3 - {self._point3.x,self._point3.y}'
+
     @property
     def point1(self):
         return self._point1
@@ -126,6 +134,8 @@ class Triangle:
         self.point2 = point_2
         self.point3 = point_3
 
+
+
     @property
     def calculate_the_area_of_a_triangle(self):
         """
@@ -151,12 +161,6 @@ if __name__ == '__main__':
     point1 = Point(0, 0)
     point2 = Point(3, 0)
     point3 = Point(0, 4)
-    point4 = Point(0, 1)
-    point5 = Point(3, 1)
-    point6 = Point(2, 4)
     tr = Triangle(point1, point2, point3)
     print(tr.calculate_the_area_of_a_triangle)
-    rt = Triangle(point4, point5, point5)
-    print(rt.calculate_the_area_of_a_triangle)
-    kl = tr == rt
-    print(kl)
+    print(tr)
