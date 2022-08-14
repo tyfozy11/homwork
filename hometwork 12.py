@@ -66,6 +66,12 @@ class Line:
 
     @property
     def length(self):
+        """
+        The function, based on objects of the class Point, creates two points (beginning and end), after which it
+        calculates the length of the retract between them and returns the result of the calculation.
+
+        :return: (float)
+        """
         return ((self.begin.x - self.end.x) ** 2 + (self.begin.y - self.end.y) ** 2) ** 0.5
 
 
@@ -111,6 +117,15 @@ class Triangle:
 
     @property
     def calculate_the_area_of_a_triangle(self):
+        """
+        This function is for calculating the area of a triangle and using Heron's formula. First, from the
+         received objects of the Point class, using the length method of the Line class, it creates and calculates the
+          length of the sides, after which the obtained data is substituted into the formula and at the end the result
+          of the calculation is returned, which is the area of the triangle obtained from the points.
+
+
+        :return: (float)
+        """
         self.side_1 = Line(self._point1, self._point2).length
         self.side_2 = Line(self._point2, self._point3).length
         self.side_3 = Line(self._point1, self._point3).length
