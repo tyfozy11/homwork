@@ -1,11 +1,7 @@
-# Task 1.
-# Доопрацюйте класс Line так, щоб в атрибути begin та end обʼєктів цього класу можна було записати тільки обʼєкти
-# класу Point. Використовуйте property
-# Task 2.
-# Створіть класс Triangle (трикутник), який задається трьома точками (обʼєкти классу Point). Реалізуйте перевірку даних,
-# аналогічно до класу Line. Визначет атрибут, що містить площу трикутника (за допомогою property). Для обчислень можна
-# використати формулу Герона (https://en.wikipedia.org/wiki/Heron%27s_formula)
-
+# Task.
+# Доопрацюйте класс Triangle з попередньої домашки наступним чином:
+# --обʼєкти классу Triangle можна порівнювати між собою (==, !=, >, >=, <, <=)
+# --print() обʼєкту классу Triangle показує координати його вершин
 
 class Point:
     _x = None
@@ -80,6 +76,21 @@ class Triangle:
     _point2 = None
     _point3 = None
 
+    def __eq__(self, other):
+        return self.calculate_the_area_of_a_triangle == other.calculate_the_area_of_a_triangle
+
+    def __lt__(self, other):
+        return self.calculate_the_area_of_a_triangle < other.calculate_the_area_of_a_triangle
+
+    def __le__(self, other):
+        return self.calculate_the_area_of_a_triangle <= other.calculate_the_area_of_a_triangle
+
+    def __gt__(self, other):
+        return self.calculate_the_area_of_a_triangle > other.calculate_the_area_of_a_triangle
+
+    def __ge__(self, other):
+        return self.calculate_the_area_of_a_triangle >= other.calculate_the_area_of_a_triangle
+
     @property
     def point1(self):
         return self._point1
@@ -130,15 +141,22 @@ class Triangle:
         self.side_2 = Line(self._point2, self._point3).length
         self.side_3 = Line(self._point1, self._point3).length
 
-        perimetr = ((self.side_1 + self.side_2 + self.side_3) * 0.5)
+        p = ((self.side_1 + self.side_2 + self.side_3) * 0.5)
 
-        area_of_a_triangle = (perimetr * (perimetr - self.side_1) * (perimetr - self.side_2) * (perimetr - self.side_3)) ** 0.5
-        return area_of_a_triangle
+        S = (p * (p - self.side_1) * (p - self.side_2) * (p - self.side_3)) ** 0.5
+        return S
 
 
 if __name__ == '__main__':
     point1 = Point(0, 0)
     point2 = Point(3, 0)
     point3 = Point(0, 4)
+    point4 = Point(0, 1)
+    point5 = Point(3, 1)
+    point6 = Point(2, 4)
     tr = Triangle(point1, point2, point3)
     print(tr.calculate_the_area_of_a_triangle)
+    rt = Triangle(point4, point5, point5)
+    print(rt.calculate_the_area_of_a_triangle)
+    kl = tr == rt
+    print(kl)
