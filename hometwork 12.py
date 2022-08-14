@@ -11,7 +11,7 @@ class Point:
     _x = None
     _y = None
 
-    @property  # getter
+    @property
     def x(self):
         return self._x
 
@@ -21,7 +21,7 @@ class Point:
             raise TypeError
         self._x = value
 
-    @property  # getter
+    @property
     def y(self):
         return self._y
 
@@ -37,33 +37,83 @@ class Point:
 
 
 class Line:
-    begin = None
-    end = None
+    _begin = None
+    _end = None
 
-    def __init__(self, begin_point: Point, end_point: Point):
+    @property
+    def begin(self):
+        return self._begin
+
+    @begin.setter
+    def begin(self, value):
+        if not isinstance(value, Point):
+            raise TypeError
+        self._begin = value
+
+    @property
+    def end(self):
+        return self._end
+
+    @end.setter
+    def end(self, value):
+        if not isinstance(value, Point):
+            raise TypeError
+        self._end = value
+
+    def __init__(self, begin_point, end_point):
         self.begin = begin_point
         self.end = end_point
 
     @property
     def length(self):
-        print('in length_getter')
         return ((self.begin.x - self.end.x) ** 2 + (self.begin.y - self.end.y) ** 2) ** 0.5
 
 
 class Triangle:
-    point1 = None
-    point2 = None
-    point3 = None
+    _point1 = None
+    _point2 = None
+    _point3 = None
+
+    @property
+    def point1(self):
+        return self._point1
+
+    @point1.setter
+    def point1(self, value):
+        if not isinstance(value, Point):
+            raise TypeError
+        self._point1 = value
+
+    @property
+    def point2(self):
+        return self._point1
+
+    @point2.setter
+    def point2(self, value):
+        if not isinstance(value, Point):
+            raise TypeError
+        self._point2 = value
+
+    @property
+    def point3(self):
+        return self._point3
+
+    @point3.setter
+    def point3(self, value):
+        if not isinstance(value, Point):
+            raise TypeError
+        self._point3 = value
 
     def __init__(self, point_1: Point, point_2: Point, point_3: Point):
         self.point1 = point_1
         self.point2 = point_2
         self.point3 = point_3
 
+    @property
     def calculate_the_area_of_a_triangle(self):
-        self.side_1 = Line(point1, point2)
-        self.side_2 = Line(point2, point3)
-        self.side_3 = Line(point1, point3)
+        self.side_1 = Line(self._point1, self._point2).length
+        self.side_2 = Line(self._point2, self._point3).length
+        self.side_3 = Line(self._point1, self._point3).length
 
         p = ((self.side_1 + self.side_2 + self.side_3) * 0.5)
 
@@ -72,6 +122,8 @@ class Triangle:
 
 
 if __name__ == '__main__':
-    point_1 = Point(0, 3)
-    point_2 = Point(4, 0)
-    point_3 = Point(3, 4)
+    point1 = Point(0, 0)
+    point2 = Point(3, 0)
+    point3 = Point(0, 4)
+    tr = Triangle(point1, point2, point3)
+    print(tr.calculate_the_area_of_a_triangle)

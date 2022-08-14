@@ -67,9 +67,9 @@ def has_any_symbol(string: str, symbol_for=''):
     :return:
         (bool)
     """
-    for symbol in string:
+    for symbol in string.lower():
 
-        if symbol in symbol_for:
+        if symbol in symbol_for.lower():
             return True
 
     return False
@@ -104,7 +104,7 @@ def maximum_length_of_string(string: str, maximum_length=100):
         (str)
     """
     if len(string) > maximum_length:
-        return string[:97] + '...'
+        return string[:maximum_length-3] + '...'
     return string
 
 
@@ -116,7 +116,7 @@ def wrap_validate(func):
 
 
         val1 = is_string(kwargs['password'])
-        val2 = has_any_symbol(kwargs['password'.casefold()], 'abcdefghijklmnopqrstuvwxyz')
+        val2 = has_any_symbol(kwargs['password'], 'abcdefghijklmnopqrstuvwxyz')
         val3 = has_any_symbol(kwargs['password'], '0123456789')
         val4 = has_any_symbol(kwargs['password'], '!')
         val5 = is_valid_length(kwargs['password'])
