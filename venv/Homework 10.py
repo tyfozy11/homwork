@@ -62,3 +62,4 @@ def registration(id, login, notes, password: str) -> str:
 
 if __name__ == '__main__':
     print(registration('1231', 'qwheq', '342424', password='ewjfw12!eetwterryey'))
+    assert has_any_symbol('sfsfsff', 'qqqqq'), 'adadadadadadad'
