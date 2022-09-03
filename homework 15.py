@@ -11,7 +11,7 @@ else:
     if 300 > data_from_url_nbu.status_code >= 200:
         if content := data_from_url_nbu.headers.get('Content-Type'):
             if content == 'application/json; charset=utf-8':
-                with open('example.txt', 'a', encoding='utf-8') as file:
+                with open('Exchange Rates.txt', 'a', encoding='utf-8') as file:
                     file.write(str(datetime.datetime.now()) + '\n\n')
                     position = 1
                     for currency in data_from_url_nbu.json():
