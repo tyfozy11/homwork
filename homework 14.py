@@ -64,33 +64,67 @@ class Vehicle:
         return f'Car models {self.model} went on sale in {self.year} year, the odometer was {self.odometer_value}'
 
     def __eq__(self, other):
-        if self.year and self.odometer_value == other.year and other.odometer_value:
-            return True
+        return (self.year, self.odometer_value) == (other.year, other.odometer_value)
 
     def re_fueling(self):
-        self.filled = self.tank_capacity - self.tank_level
+        """
+This function is used on a class object, checks the difference between tank_level and tank_capacity values, after which
+the tank_level value is automatically made equal to the tank_capacity value and a message is returned about how much
+the tank_level value has changed.
+        :return: (str)
+        """
+        filled = self.tank_capacity - self.tank_level
         if self.tank_capacity != self.tank_level:
-            return f'It was filled with {self.filled} liters.'
+            self.tank_level = self.tank_capacity
+            return f'It was filled with {filled} liters.'
 
-    def race(self, other):
-        self.average_speed = self.max_speed * 0, 8
-        self.time_race = self
-        return
+    def race(self, way):
+        """
+This function is for creating and filling a dictionary, depending on the value of the wey argument, and after the
+comparison and calculations prescribed in this method, the values of the object, such as tank_level and
+odometer_value, are overwritten.
+        :param way: (int, float, >=0)
+        :return:(dict)
+        """
+        max_way = self.tank_level * 100 / self.fuel_consumption
+        if way > max_way:
+            way = max_way
+        self.odometer_value += way
+        self.tank_level -= way * self.fuel_consumption / 100
+        time = way / self.max_speed * 0.8
+        return {
+            'time': time,
+            'way': way,
+            'fuel': self.tank_level
+        }
 
-    def lend_fuel(self, oder):
-        self.helped_refuel = self.tank_capacity - self.tank_level
-        if self.tank_capacity < oder.tank_level:
-            self.tank_capacity = oder.tank_level - self.helped_refuel
-            return f'Thank you, you filled me with {self.helped_refuel} liters.'
-        if self.tank_capacity == self.tank_level or oder.tank_level == 0:
+    def lend_fuel(self, other):
+        """
+The function first checks the tank_level value of two objects of the class and, based on the received one, either
+replenishes the value of the first subtracting from the value of the other, while displaying a message in which it is
+indicated how much this value has been filled;
+or simply displays a message if the exchange is not possible.
+        :param other:(int)
+        :return: (str)
+        """
+        helped_refuel = self.tank_capacity - self.tank_level
+        if self.tank_capacity == self.tank_level or other.tank_level == 0:
             return 'It\'s alright, I\'ll figure it out'
+        if helped_refuel > other.tank_level:
+            helped_refuel = other.tank_level
+        self.tank_level += helped_refuel
+        other.tank_level -= helped_refuel
+        return f'Thank you, you filled me with {helped_refuel} liters.'
 
 
 if __name__ == '__main__':
-    auto_1 = Vehicle('car', 'Audi A6', 2015, 60, 40, 220, 10, 0)
-    auto_2 = Vehicle('car', 'BMW X6', 2015, 90, 80, 240, 15, 0)
+    auto_1 = Vehicle('car', 'Audi A6', 2015, 60, 0, 220, 10, 0)
+    auto_2 = Vehicle('car', 'BMW X6', 2015, 90, 0, 240, 15, 0)
     print(auto_1, '\n', auto_2)
-    # print(auto_1.re_fueling())
+    print(auto_1 == auto_2)
     print(auto_2.re_fueling())
     print(Vehicle.lend_fuel(auto_1, auto_2))
     print(auto_2.tank_level)
+    print(auto_2.race(100))
+    print(auto_2.race(500))
+    print(auto_1 == auto_2)
